@@ -4,6 +4,7 @@ import { Map, Marker, Popup, Circle, CircleMarker, TileLayer } from 'react-leafl
 import ReactList from 'react-list';
 
 const WuhanPosition = [30.58333, 114.26667]
+const ENV = "dev" // dis   
 
 class VirusMap extends Component {
 
@@ -15,7 +16,8 @@ class VirusMap extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8000/virus-data.json')
+    const sourceUrl = (ENV == "dis") ? "https://github.com/lbj96347/2020-virus-map/blob/master/virus-data.json" : "http://localhost:8000/virus-data.json" 
+    fetch(sourceUrl)
       .then(response => response.json())
       .then(data => this.setState({ data }));
   }
