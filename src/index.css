@@ -17,3 +17,15 @@ code {
   width: 100vw;
   height: 70vh;
 }
+
+.scroll-list {
+  width: 100vw;
+  height: 30vh;
+  overflow:auto;
+}
+
+.item {
+  background: linear-gradient(#fff, #eee);
+  line-height: 30px;
+  padding: 0 10px;
+}

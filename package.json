@@ -10,7 +10,9 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-leaflet": "^2.6.1",
-    "react-scripts": "3.3.0"
+    "react-list": "^0.8.13",
+    "react-scripts": "3.3.0",
+    "react-scroll": "^1.7.16"
   },
   "scripts": {
     "start": "react-scripts start",
