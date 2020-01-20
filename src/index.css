@@ -1,4 +1,5 @@
 @import url('https://unpkg.com/leaflet@1.6.0/dist/leaflet.css');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -22,6 +23,7 @@ code {
   width: 100vw;
   height: 30vh;
   overflow:auto;
+  display: block;
 }
 
 .item {

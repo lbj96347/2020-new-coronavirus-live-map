@@ -16,7 +16,7 @@ class VirusMap extends Component {
   }
 
   componentDidMount() {
-    const sourceUrl = (ENV == "dis") ? "https://github.com/lbj96347/2020-virus-map/blob/master/virus-data.json" : "http://localhost:8000/virus-data.json" 
+    const sourceUrl = (ENV == "dis") ? "https://lbj96347.github.io/2020-virus-map/virus-data.json" : "http://localhost:8000/virus-data.json" 
     fetch(sourceUrl)
       .then(response => response.json())
       .then(data => this.setState({ data }));
@@ -28,9 +28,8 @@ class VirusMap extends Component {
 
   renderItem(index, key) {
     return <div class="item" key={key}>
-      {this.state.data.sources[index].city}  
       <a href={this.state.data.sources[index].news}>
-        {this.state.data.sources[index].news}
+        {this.state.data.sources[index].city}  点击查看最新进展  
       </a>
       </div>;
   }
