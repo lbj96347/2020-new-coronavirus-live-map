@@ -4,7 +4,7 @@ import { Map, Marker, Popup, CircleMarker, TileLayer } from 'react-leaflet'
 // import ReactList from 'react-list';
 
 const WuhanPosition = [30.58333, 114.26667]
-const ENV = "dev" // dis   
+const ENV = "dis" // dis   
 
 class VirusMap extends Component {
 
