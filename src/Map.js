@@ -1,7 +1,7 @@
 import React ,  { Component } from 'react'
-import { render } from 'react-dom'
-import { Map, Marker, Popup, Circle, CircleMarker, TileLayer } from 'react-leaflet'
-import ReactList from 'react-list';
+// import { render } from 'react-dom'
+import { Map, Marker, Popup, CircleMarker, TileLayer } from 'react-leaflet'
+// import ReactList from 'react-list';
 
 const WuhanPosition = [30.58333, 114.26667]
 const ENV = "dev" // dis   
@@ -16,7 +16,7 @@ class VirusMap extends Component {
   }
 
   componentDidMount() {
-    const sourceUrl = (ENV == "dis") ? "https://lbj96347.github.io/2020-virus-map/virus-data.json" : "http://localhost:8000/virus-data.json" 
+    const sourceUrl = (ENV === "dis") ? "https://lbj96347.github.io/2020-virus-map/virus-data.json" : "http://localhost:8000/virus-data.json" 
     fetch(sourceUrl)
       .then(response => response.json())
       .then(data => this.setState({ data }));
@@ -26,18 +26,13 @@ class VirusMap extends Component {
 
   }
 
-  renderItem(index, key) {
-    return <div class="item" key={key}>
-      <a href={this.state.data.sources[index].news}>
-        {this.state.data.sources[index].city}  点击查看最新进展  
-      </a>
-      </div>;
-  }
-
   render(){
       if(this.state.data){
         return  (
           <div>
+            <div className="item">
+              <a>新型冠状病毒地图 - 数据来源央视新闻或者地方卫生部门网站</a>
+            </div>
             <Map noWrap={true}  scrollWheelZoom={true} maxZoom="18" className="map-container" center={WuhanPosition} zoom={5}>
               <TileLayer
                 noWrap={true} 
@@ -48,7 +43,7 @@ class VirusMap extends Component {
 
               {this.state.data.sources.map( (item, key) => 
                 <Marker key={key} position={item["position"]}>
-                  <Popup>{item["city"]} 新型冠状病毒感染个案（含怀疑）：{item["number"]} </Popup>
+                  <Popup> <a href={item["news"]}>{item["city"]}</a> 新型冠状病毒感染个案（含怀疑）：{item["number"]} </Popup>
                 </Marker>
               )}
 
@@ -58,13 +53,6 @@ class VirusMap extends Component {
               )}
             </Map>
 
-            <div class="scroll-list">
-              <ReactList
-                itemRenderer={this.renderItem.bind(this)}
-                length={this.state.data.sources.length}
-                type='uniform'
-              />
-            </div>
           </div>
         );
       }

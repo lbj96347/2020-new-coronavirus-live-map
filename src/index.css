@@ -16,18 +16,19 @@ code {
 
 .map-container {
   width: 100vw;
-  height: 70vh;
-}
-
-.scroll-list {
-  width: 100vw;
-  height: 30vh;
-  overflow:auto;
-  display: block;
+  height: calc(100vh - 30px);
+  top: 30px;
+  position: fixed;
 }
 
 .item {
   background: linear-gradient(#fff, #eee);
   line-height: 30px;
-  padding: 0 10px;
+  width: 100vw;
+  height: 30px;
+  position: fixed;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 10pt;
+  top:0px;  /* as the height of the other div is 30px */
 }
