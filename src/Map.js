@@ -41,18 +41,19 @@ class VirusMap extends Component {
             <Map noWrap={true}  scrollWheelZoom={true} maxZoom="18" className="map-container" center={WuhanPosition} zoom={5}>
               <TileLayer
                 noWrap={true} 
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                url="https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2FzaGxlZSIsImEiOiJjazVsdjcyejYwcXBqM2Vxa2E2aGQ2eHI2In0.Uhid4EEYMyB8iFarVody3A"
                 id="mapbox/streets-v11"
+                attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>Mapbox</a>"
               />
 
               {this.state.data.sources.map( (item, key) => 
                 <Marker key={key} position={item["position"]}>
-                  <Popup>{item["city"]} 新型冠状病毒感染个案：{item["number"]} </Popup>
+                  <Popup>{item["city"]} 新型冠状病毒感染个案（含怀疑）：{item["number"]} </Popup>
                 </Marker>
               )}
 
               {this.state.data.sources.map( (item, key) => 
-                <CircleMarker key={key} color="red" fillColor="#f03" fillOpacity="0.5" radius="20"  center={item["position"]}>
+                <CircleMarker key={key} color={ (item["confirmed"] ?  "red" : "yellow") } fillColor={ (item["confirmed"] ? "#f03" : "#ffcf00")} fillOpacity="0.5" radius={ ((item["number"] > 20) ? 20 : item["number"]) }  center={item["position"]}>
                 </CircleMarker>
               )}
             </Map>
