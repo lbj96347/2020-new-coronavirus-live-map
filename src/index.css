@@ -16,19 +16,26 @@ code {
 
 .map-container {
   width: 100vw;
-  height: calc(100vh - 30px);
-  top: 30px;
+  height: calc(100vh - 90px);
+  top: 90px;
   position: fixed;
 }
 
 .item {
   background: linear-gradient(#fff, #eee);
-  line-height: 30px;
   width: 100vw;
-  height: 30px;
+  height: 90px;
   position: fixed;
   padding-left: 10px;
   padding-right: 10px;
   font-size: 10pt;
   top:0px;  /* as the height of the other div is 30px */
+}
+
+.item p {
+  margin: 10px;
+}
+
+.item a {
+  margin-right: 10px;
 }
