@@ -4,7 +4,7 @@ import { Map, Marker, Popup, CircleMarker, TileLayer } from 'react-leaflet'
 // import ReactList from 'react-list';
 
 const WuhanPosition = [30.58333, 114.26667]
-const ENV = "dis" // dis   
+const ENV = "dev" // dis   
 
 class VirusMap extends Component {
 
@@ -17,7 +17,7 @@ class VirusMap extends Component {
   }
 
   componentDidMount() {
-    const sourceUrl = (ENV === "dis") ? "https://lbj96347.github.io/2020-virus-map/virus-data.json" : "http://localhost:8000/virus-data-nation.json" 
+    const sourceUrl = (ENV === "dis") ? "https://lbj96347.github.io/2020-virus-map/virus-data.json" : "http://localhost:8000/virus-data.json" 
     fetch(sourceUrl)
       .then(response => response.json())
       .then(data => this.setState({ data }));
@@ -58,12 +58,12 @@ class VirusMap extends Component {
 
               {this.state.data.data[this.state.nationIndex].sources.map( (item, key) => 
                 <Marker key={key} position={item["position"]}>
-                  <Popup> <a href={item["news"]}>{item["city"]}</a> 新型冠状病毒感染个案（含怀疑）：{item["number"]} </Popup>
+                  <Popup> {item["cityName"]} 新型冠状病毒感染个案（含怀疑）：{item["confirmedCount"]} </Popup>
                 </Marker>
               )}
 
               {this.state.data.data[this.state.nationIndex].sources.map( (item, key) => 
-                <CircleMarker key={key} color={ (item["confirmed"] ?  "red" : "yellow") } fillColor={ (item["confirmed"] ? "#f03" : "#ffcf00")} fillOpacity="0.5" radius={ ((item["number"] > 20) ? 20 : item["number"]) }  center={item["position"]}>
+                <CircleMarker key={key} color={ (item["confirmedCount"] ?  "red" : "yellow") } fillColor={ (item["confirmedCount"] ? "#f03" : "#ffcf00")} fillOpacity="0.5" radius={ ((item["confirmedCount"] > 20) ? 20 : item["confirmedCount"]) }  center={item["position"]}>
                 </CircleMarker>
               )}
             </Map>
