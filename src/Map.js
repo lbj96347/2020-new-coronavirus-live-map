@@ -51,8 +51,8 @@ class VirusMap extends Component {
             <Map noWrap={true}  scrollWheelZoom={true} maxZoom="18" className="map-container" center={WuhanPosition} zoom={5}>
               <TileLayer
                 noWrap={true} 
-                url="https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2FzaGxlZSIsImEiOiJjazVsdjcyejYwcXBqM2Vxa2E2aGQ2eHI2In0.Uhid4EEYMyB8iFarVody3A"
-                id="mapbox/streets-v11"
+                url="http://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}"
+                subdomains="1234"
                 attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>Mapbox</a>"
               />
 
